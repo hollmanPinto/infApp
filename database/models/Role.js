@@ -4,14 +4,22 @@ const sequelize = require('../db');
 class Role extends Model {}
 Role.init({
   // Model attributes are defined here
-  RoleName: {
+  rolename: {
     type: DataTypes.STRING,
     allowNull: false
   },
-  Permisos: {
-    type: DataTypes.STRING
-    // allowNull defaults to true
-  }
+  inventario: {
+	type: DataTypes.BOOLEAN,
+	allowNull: false
+      },
+  clientes: {
+	type: DataTypes.BOOLEAN,
+	allowNull: false
+      },
+  proyectos: {
+	type: DataTypes.BOOLEAN,
+	allowNull: false
+      }
 }, {
   // Other model options go here
   sequelize, // We need to pass the connection instance
