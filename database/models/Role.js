@@ -4,9 +4,15 @@ const sequelize = require('../db');
 class Role extends Model {}
 Role.init({
   // Model attributes are defined here
-  rolename: {
-    type: DataTypes.STRING,
+  roleid: {
+    primaryKey:true,
+    autoIncrement:true,
+    type: DataTypes.INTEGER,
     allowNull: false
+  },
+  rolename:{
+	  type: DataTypes.STRING,
+	  allowNull:false
   },
   inventario: {
 	type: DataTypes.BOOLEAN,

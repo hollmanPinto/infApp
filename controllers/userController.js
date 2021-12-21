@@ -1,4 +1,4 @@
-//const Role = require('../database/models/Role');
+const Role = require('../database/models/Role');
 const User=require('../database/models/User');
 
 function createUser(req,res) {
@@ -11,7 +11,7 @@ function createUser(req,res) {
 	  telefono:req.body.telefono,
 	  direccion:req.body.direccion,
 	  correo:req.body.correo,
-	  rol:req.body.rol
+	  roleRoleid:req.body.roleid
 	})
 	.then((user) => {
 	  return res.status(200).json(user)
@@ -22,7 +22,9 @@ function createUser(req,res) {
       }
 
 function allUser(req,res){
-	User.findAll({include:'role'})
+	User.findAll({
+		
+	})
 	.then((user) => {
 	return res.status(200).json(user)
 	      })
@@ -30,4 +32,5 @@ function allUser(req,res){
 	return res.status(400).json(error)
 	      });
 }
+
 module.exports={createUser,allUser};

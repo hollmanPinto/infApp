@@ -3,7 +3,12 @@ const sequelize = require('../db');
 
 class User extends Model {}
 User.init({
-  // Model attributes are defined here
+  userid: {
+	primaryKey:true,
+	autoIncrement:true,
+	type: DataTypes.INTEGER,
+	allowNull: false
+	      },
   username: {
     type: DataTypes.STRING,
     allowNull: false
@@ -32,14 +37,15 @@ User.init({
 	type: DataTypes.STRING,
 	allowNull: false
       },
-  rol: {
+  roleRoleid: {
 	type: DataTypes.INTEGER,
 	allowNull: false
-      },
+      }
 }, {
   // Other model options go here
   sequelize, // We need to pass the connection instance
-  modelName: 'user' // We need to choose the model name
+  modelName: 'user', // We need to choose the model name
+  timestamps:false
 });
 
 module.exports=User;
