@@ -16,7 +16,7 @@ server.listen(PORT, function(){
 	console.log(`Server run on port ${PORT}`);
 
 	//Prueba conexion BD
-	sequelize.sync({force:true}).then(()=>{
+	sequelize.sync({force:false}).then(()=>{
 		console.log("DB sucesfully");
 	}).catch(error=>{
 		console.log('error',error);

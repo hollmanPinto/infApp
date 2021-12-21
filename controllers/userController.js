@@ -1,3 +1,4 @@
+//const Role = require('../database/models/Role');
 const User=require('../database/models/User');
 
 function createUser(req,res) {
@@ -21,9 +22,7 @@ function createUser(req,res) {
       }
 
 function allUser(req,res){
-	User.findAll({
-		include:'rol'
-	})
+	User.findAll({include:'role'})
 	.then((user) => {
 	return res.status(200).json(user)
 	      })

@@ -23,7 +23,8 @@ Role.init({
 }, {
   // Other model options go here
   sequelize, // We need to pass the connection instance
-  modelName: 'role' // We need to choose the model name
+  modelName: 'role', // We need to choose the model name
+  timestamps:false
 });
 
 module.exports=Role;
