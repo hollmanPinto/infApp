@@ -11,7 +11,7 @@ async function createUser(req,res) {
 	  telefono:req.body.telefono,
 	  direccion:req.body.direccion,
 	  correo:req.body.correo,
-	  roleRoleid:req.body.roleRoleid
+	  //roleRoleid:req.body.roleRoleid
 	})
 	.then((user) => {
 	  return res.status(200).json(user)
@@ -34,7 +34,12 @@ async function allUser(req,res){
 }
 //function to find user by username
 async function findUsername(req,res,param){
-	await User.findOne({where:{username:param}	
+	await User.findOne({where:{username:param},
+		include:{
+			model:Role,
+			attributes:['rolename','inventario','clientes','proyectos']
+		},
+		attributes:['username','nombre','apellido','telefono','direccion','correo']	
 	})
 	.then((user) => {
 	return res.status(200).json(user)

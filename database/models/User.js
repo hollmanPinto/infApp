@@ -40,7 +40,8 @@ User.init({
       },
   roleRoleid: {
 	type: DataTypes.INTEGER,
-	allowNull: false
+  defaultValue:3,
+	allowNull: false, 
       }
 }, {
   // Other model options go here

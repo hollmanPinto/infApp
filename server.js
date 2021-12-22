@@ -10,7 +10,7 @@ server.use(bodyParser.urlencoded({extended:false}))
 server.use(bodyParser.json())
 server.use(Routes)
 //iniciar servidor
-const PORT=process.env.PORT || 3000;
+const PORT=process.env.PORT || 3002;
 
 server.listen(PORT, function(){
 	console.log(`Server run on port ${PORT}`);
