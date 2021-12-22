@@ -3,7 +3,7 @@ const User=require('../database/models/User');
 //FUNCION PARA COMPARAR CON EL LOGIN
 function loginUser(req,res){
 	User.findAll({
-		//attributes:['username','correo'],
+		attributes:['username','contrasena','correo'],
 		where:{username:req.body.username, contrasena:req.body.contrasena}
 	})
 	.then((user) => {

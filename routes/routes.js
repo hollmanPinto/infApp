@@ -8,16 +8,16 @@ const jwt = require('jsonwebtoken');
 //RUTAS//
 router.post('/signin',(login.loginUser));
 router.post('/register', (userRoute.createUser));
+router.get('/prueba', (userRoute.allUser));
 
 router.get('/profile',verifyToken,(req,res) => {  
 	jwt.verify(req.token, 'secretkey', (error, authData)=>{
 		if(error){
 			res.sendStatus(403);
 		}
-		else{res.json({
-			authData,
-			"mensaje":userRoute.allUser
-		});			
+		else{
+			userRoute.allUser(req,res)
+			//console.log('si entra al else');		
 		}
 	});
 });
