@@ -5,23 +5,24 @@ const roleRouter = require('../controllers/roleController')
 const login = require('../login/login');
 const jwt = require('jsonwebtoken');
 
+var prueba=login.prueba;
 //RUTAS//
 router.post('/signin',(login.loginUser));
 router.post('/register', (userRoute.createUser));
-router.get('/prueba', (userRoute.allUser));
 
 router.get('/profile',verifyToken,(req,res) => {  
 	jwt.verify(req.token, 'secretkey', (error, authData)=>{
-		if(error){
-			res.sendStatus(403);
-		}
-		else{
-			userRoute.allUser(req,res)
-			//console.log('si entra al else');		
+		if(error){res.sendStatus(403)}
+		else{	
+			//estoy operando los arrays para obteer el username especifico	
+			var datauserJSON=(authData.user[0]);	
+			var userString = datauserJSON['username']
+			//console.log(userString)
+			userRoute.findUsername(req,res,userString)
 		}
 	});
+	
 });
-
 router.post('/roles', (roleRouter.createRole));
 
 //FUNCION PARA VERIFICAR TOKENS Y PERMITIR ACCESO//

@@ -1,9 +1,9 @@
 const Role = require('../database/models/Role');
 const User=require('../database/models/User');
 
-function createUser(req,res) {
-	//console.log(req.body)
-	User.create({	
+//funcion that create user
+async function createUser(req,res) {
+	await User.create({	
 	  username: req.body.username,
 	  contrasena: req.body.contrasena,
 	  nombre: req.body.nombre,
@@ -11,7 +11,7 @@ function createUser(req,res) {
 	  telefono:req.body.telefono,
 	  direccion:req.body.direccion,
 	  correo:req.body.correo,
-	  roleRoleid:req.body.roleid
+	  roleRoleid:req.body.roleRoleid
 	})
 	.then((user) => {
 	  return res.status(200).json(user)
@@ -20,9 +20,9 @@ function createUser(req,res) {
 	  return res.status(400).json(error)
 	});
       }
-
-function allUser(req,res){
-	User.findAll({
+//function to find all users
+async function allUser(req,res){
+	await User.findAll({
 		
 	})
 	.then((user) => {
@@ -32,5 +32,16 @@ function allUser(req,res){
 	return res.status(400).json(error)
 	      });
 }
+//function to find user by username
+async function findUsername(req,res,param){
+	await User.findOne({where:{username:param}	
+	})
+	.then((user) => {
+	return res.status(200).json(user)
+	      })
+	.catch((error) => {
+	return res.status(400).json(error)
+	      });
+}
 
-module.exports={createUser,allUser};
+module.exports={createUser,allUser,findUsername};
