@@ -1,0 +1,2 @@
+from .projectsDetailView import ProjectsDetailView
+from .clientsDetailView import ClientsDetailView

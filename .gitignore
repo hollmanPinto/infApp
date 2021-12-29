@@ -1,1 +1,12 @@
 /node_modules
+/.vscode
+/controllers
+/database
+/env
+/login
+/routes
+/config.js
+/databaseERM.dia
+/package-lock.json
+/package.json
+/server.js
